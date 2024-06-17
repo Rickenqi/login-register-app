@@ -1,0 +1,32 @@
+<form (ngSubmit)="register()" #registerForm="ngForm">
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="email" #email="ngModel" required email />
+      <div *ngIf="email.invalid && email.touched">
+        <div *ngIf="email.errors?.required">Email is required.</div>
+        <div *ngIf="email.errors?.email">Invalid email format.</div>
+      </div>
+    </div>
+  
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password" #password="ngModel" required />
+      <div *ngIf="password.invalid && password.touched">
+        <div *ngIf="password.errors?.required">Password is required.</div>
+      </div>
+    </div>
+  
+    <div>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" #confirmPassword="ngModel" required [compareWith]="password" />
+      <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
+        <div *ngIf="confirmPassword.errors?.required">Confirm Password is required.</div>
+        <div *ngIf="confirmPassword.errors?.mustMatch">Passwords must match.</div>
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div *ngIf="successMessage">{{ successMessage }}</div>
+  </form>
+  

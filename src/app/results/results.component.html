@@ -1,0 +1,21 @@
+<div>
+    <h2>Search Results for "{{ query }}"</h2>
+    <input type="text" [(ngModel)]="filter" placeholder="Filter results" />
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Profile URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers()">
+          <td>{{ user.id }}</td>
+          <td>{{ user.login }}</td>
+          <td><a [href]="user.html_url" target="_blank">{{ user.html_url }}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

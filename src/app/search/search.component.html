@@ -1,0 +1,7 @@
+<div>
+    <h1>GitHub User Search</h1>
+    <input type="text" [(ngModel)]="username" placeholder="Enter GitHub username" />
+    <button (click)="search()">Search</button>
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+  
